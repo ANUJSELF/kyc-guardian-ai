@@ -1,0 +1,117 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+*.iml
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+kyc_guardian.db
+
+# Logs
+*.log
+logs/
+.logs/
+
+# Storage directories
+storage/
+documents/
+temp/
+uploads/
+
+# Demo data (generated)
+demo-data/generated/
+
+# Test outputs
+.coverage
+.pytest_cache/
+coverage/
+htmlcov/
+.nyc_output/
+coverage.lcov
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.tmp/
+tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.exe
+*.dll
+
+# Node
+.npm
+.eslintcache
+.node-gyp/
+
+# Docker
+.dockerignore
+
+# PII and sensitive
+sensitive_data/
+*.pem
+*.key
+*.crt
+.secrets/
+
+# Misc
+.cache/
+.turbo/
