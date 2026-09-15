@@ -1,0 +1,32 @@
+.navigation {
+  width: 240px;
+  background-color: #001f3f;
+  color: white;
+  padding: 12px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.nav-header {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 8px;
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.navigation a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navigation a.active {
+  background-color: #0074d9;
+  font-weight: 500;
+}
