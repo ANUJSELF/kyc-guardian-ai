@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kyc-guardian-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - FRONTEND_URL=http://localhost:5173
+      - DATABASE_URL=sqlite:///./kyc_guardian.db
+      - DOCUMENT_STORAGE_PATH=/app/storage/documents
+      - TEMP_UPLOAD_PATH=/app/storage/temp
+      - AI_SERVICE=mock
+      - ENABLE_MOCK_DATA=true
+      - ENABLE_DEMO_RESET=true
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/storage:/app/storage
+      - ./backend/logs:/app/logs
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - kyc-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kyc-guardian-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    command: npm run dev
+    networks:
+      - kyc-network
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  kyc-network:
+    driver: bridge
+
+volumes:
+  backend_storage:
+    driver: local
